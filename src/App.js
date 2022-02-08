@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import ReactMarkdown from 'react-markdown';
+
 import './App.css';
 
 function App() {
+  const codeString = `
+  
+  (num) => num + 1
+  console.log("hello worl")
+  
+  `;
+
+  const markdown = `# Hello, *world* !`;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ReactMarkdown children={markdown} />
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {codeString}
+      </SyntaxHighlighter>
     </div>
   );
 }
